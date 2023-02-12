@@ -1,0 +1,40 @@
+{
+  "name": "lead-collector",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple landing page for lead collection.",
+  "author": "Nerdbord",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "gatsby": "^5.5.0",
+    "gatsby-plugin-image": "^3.6.0",
+    "gatsby-plugin-sass": "^6.6.0",
+    "gatsby-plugin-sharp": "^5.6.0",
+    "gatsby-source-filesystem": "^5.6.0",
+    "gatsby-transformer-sharp": "^5.6.0",
+    "nerdux-ui-system": "^0.1.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.58.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "husky": "^8.0.0",
+    "prettier": "^2.8.3",
+    "pretty-quick": "^3.1.3",
+    "typescript": "^4.9.5"
+  }
+}
