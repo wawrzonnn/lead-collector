@@ -128,3 +128,20 @@ body {
     transform: translateY(50px);
   }
 }
+
+.formMessage {
+  display: inline-block;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 52px;
+  margin-top: 5rem;
+  margin-bottom: 1.5rem;
+  &--info {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
+    color: #b23386;
+  }
+}
