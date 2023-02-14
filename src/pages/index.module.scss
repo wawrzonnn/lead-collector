@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,13 +11,120 @@ body {
 }
 
 .titleHeader {
-  text-align: center;
-  padding-top: 25%;
+  text-align: left;
+  padding-top: 15%;
   h1 {
-    font-size: 42px;
-    margin-bottom: 24px;
+    font-size: 45px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 52px;
   }
-  a {
+  span {
     display: inline-block;
+    color: #b23386;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+  }
+}
+
+.container {
+  &__left {
+    width: 10%;
+    background: #b23386;
+  }
+  &__center {
+    width: 40%;
+    padding: 0 3rem;
+  }
+  &__right {
+    width: 50%;
+    background: #b23386;
+    display: flex;
+  }
+}
+
+.switch__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  p {
+    margin-right: 0.5rem;
+  }
+}
+
+.textfield__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &--Item {
+    margin: 1.5rem;
+  }
+}
+
+.checkbox__container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 3rem 0;
+  &--link {
+    margin-left: 0.4rem;
+  }
+}
+
+.gameboysUp {
+  position: relative;
+  display: block;
+  height: 100vh;
+  margin: 0 auto;
+  animation: slideUp 20s linear infinite;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(-50px);
+  }
+  25% {
+    transform: translateY(50px);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+  75% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
+
+.gameboysDown {
+  position: relative;
+  display: block;
+  height: 100vh;
+  margin: 0 auto;
+  animation: slideDown 20s linear infinite;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(50px);
+  }
+  25% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+  75% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(50px);
   }
 }
