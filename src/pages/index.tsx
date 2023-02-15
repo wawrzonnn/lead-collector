@@ -56,13 +56,13 @@ const IndexPage: React.FC<PageProps> = () => {
       errors.email = "Email is required";
     }
     if (!values.acceptance) {
-      errors.acceptance = "test";
+      errors.acceptance = "test1";
     }
     if (values.acceptance) {
-      errors.acceptance = "test";
+      errors.acceptance = "test2";
     }
     if (!values.acceptance) {
-      errors.email = "test";
+      errors.email = "test3";
     }
     return errors;
   };
