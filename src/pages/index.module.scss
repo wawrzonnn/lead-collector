@@ -29,8 +29,10 @@ body {
 }
 
 .container {
+  height: 100vh;
   &__left {
     width: 10%;
+    height: 100vh;
     background: #b23386;
   }
   &__center {
@@ -76,12 +78,13 @@ body {
     margin-left: 0.4rem;
   }
 }
-
-.gameboysUp {
+.gameboys {
   position: relative;
   display: block;
   height: 100vh;
   margin: 0 auto;
+}
+.gameboysUp {
   animation: slideUp 20s linear infinite;
 }
 
@@ -104,10 +107,6 @@ body {
 }
 
 .gameboysDown {
-  position: relative;
-  display: block;
-  height: 100vh;
-  margin: 0 auto;
   animation: slideDown 20s linear infinite;
 }
 
@@ -144,4 +143,12 @@ body {
     line-height: 28px;
     color: #b23386;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.disabledBackground {
+  background-color: #c9c5ca;
 }

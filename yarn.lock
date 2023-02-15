@@ -9996,10 +9996,10 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "http://139.59.154.199:4873/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nerdux-ui-system@^0.1.4:
-  version "0.1.4"
-  resolved "http://139.59.154.199:4873/nerdux-ui-system/-/nerdux-ui-system-0.1.4.tgz#8b3b9db037500ccbd8c9e84a8d159f2022ee95bb"
-  integrity sha512-SvwdEb2D+1jGv0+426n4eyke3/ufpeiXnrQa4wAmEgDNTZpfjpEzt3MbOutGWeqPsmgETel/Pq0ExjeerHlapA==
+nerdux-ui-system@^0.1.5:
+  version "0.1.5"
+  resolved "http://139.59.154.199:4873/nerdux-ui-system/-/nerdux-ui-system-0.1.5.tgz#ce9b3cb59518907293715fcf5cc3774743078c53"
+  integrity sha512-XgbUVGRKbIt5t+IPkflinxZ4LqrwBA3sIChhVgcAwm+a2NgaPOU7/qOgGpqe8vSDOspjSiGVtH3ONoYqw3d8Eg==
   dependencies:
     "@storybook/react" "^6.5.16"
     copyfiles "^2.4.1"

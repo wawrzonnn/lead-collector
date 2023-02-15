@@ -1,19 +1,18 @@
 import * as React from "react";
 import { useState, Fragment } from "react";
-
 import type { HeadFC, PageProps } from "gatsby";
-
 import { Container } from "../components/Container/Container";
 import { Link, Switch, TextField, Checkbox, Button } from "nerdux-ui-system";
 import Gameboys from "../../public/gameboys.png";
 import BackArrowIcon from "../Icons/BackArrowIcon";
-
 import * as styles from "./index.module.scss";
 
 const IndexPage: React.FC<PageProps> = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [error, setError] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [disabledBackground, setDisabledBackground] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,10 +22,26 @@ const IndexPage: React.FC<PageProps> = () => {
   const handleTryAgain = () => {
     setFormSubmitted(false);
   };
+
+  const handleSwitch = () => {
+    setDisabled(!disabled);
+    setHidden(!hidden);
+    setDisabledBackground(!disabledBackground);
+  };
+
+  const hiddenClass = hidden ? styles.hidden : "";
+  const disabledBackgroundClass = disabledBackground
+    ? styles.disabledBackground
+    : "";
+  const gameboysClasses = [[styles.gameboys], [hiddenClass]].join(" ");
   return (
     <Container>
-      <aside className={styles.container__left}>
-        <img className={styles.gameboysUp} src={Gameboys} alt="gameboys" />
+      <aside className={`${styles.container__left} ${disabledBackgroundClass}`}>
+        <img
+          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          src={Gameboys}
+          alt="gameboys"
+        />
       </aside>
       {!formSubmitted && !error && (
         <section className={styles.container__center}>
@@ -42,7 +57,7 @@ const IndexPage: React.FC<PageProps> = () => {
               <div className={styles.switch__container}>
                 <p>I swear, I’m a classic gameboy fan</p>
                 <Switch
-                  onChange={() => {}}
+                  onChange={handleSwitch}
                   id="switch-1"
                   checked={true}
                   disabled={false}
@@ -65,6 +80,7 @@ const IndexPage: React.FC<PageProps> = () => {
                   name="email"
                   label="Email"
                   placeholder="e.g. richard@gmail.com"
+                  disabled={disabled}
                 />
               </div>
               <div className={styles.checkbox__container}>
@@ -74,12 +90,16 @@ const IndexPage: React.FC<PageProps> = () => {
                   onChange={() => {}}
                   checked={true}
                   label="I have read and accept the"
+                  disabled={disabled}
                 />
                 <div className={styles.checkbox__containerLink}>
-                  <Link to="#"> privacy policy</Link>
+                  <Link to="#" disabled={disabled}>
+                    {" "}
+                    privacy policy
+                  </Link>
                 </div>
               </div>
-              <Button type="submit" onClick={() => {}}>
+              <Button type="submit" onClick={() => {}} disabled={disabled}>
                 Sign me up!
               </Button>
             </form>
@@ -105,11 +125,29 @@ const IndexPage: React.FC<PageProps> = () => {
           </Button>
         </div>
       )}
-      <aside className={styles.container__right}>
-        <img className={styles.gameboysDown} src={Gameboys} alt="gameboys" />
-        <img className={styles.gameboysUp} src={Gameboys} alt="gameboys" />
-        <img className={styles.gameboysDown} src={Gameboys} alt="gameboys" />
-        <img className={styles.gameboysUp} src={Gameboys} alt="gameboys" />
+      <aside
+        className={`${styles.container__right} ${disabledBackgroundClass}`}
+      >
+        <img
+          className={`${gameboysClasses} ${styles.gameboysDown}`}
+          src={Gameboys}
+          alt="gameboys"
+        />
+        <img
+          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          src={Gameboys}
+          alt="gameboys"
+        />
+        <img
+          className={`${gameboysClasses} ${styles.gameboysDown}`}
+          src={Gameboys}
+          alt="gameboys"
+        />
+        <img
+          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          src={Gameboys}
+          alt="gameboys"
+        />
       </aside>
     </Container>
   );
