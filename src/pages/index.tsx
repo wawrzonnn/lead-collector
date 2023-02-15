@@ -6,6 +6,19 @@ import { Link, Switch, TextField, Checkbox, Button } from "nerdux-ui-system";
 import Gameboys from "../../public/gameboys.png";
 import BackArrowIcon from "../Icons/BackArrowIcon";
 import * as styles from "./index.module.scss";
+import { useFormik } from "formik";
+
+interface FormValues {
+  username: string;
+  email: string;
+  acceptance: boolean;
+}
+
+interface FormErrors {
+  username?: string;
+  email?: string;
+  acceptance?: string;
+}
 
 const IndexPage: React.FC<PageProps> = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -13,11 +26,6 @@ const IndexPage: React.FC<PageProps> = () => {
   const [disabled, setDisabled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [disabledBackground, setDisabledBackground] = useState(false);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setFormSubmitted(true);
-  };
 
   const handleTryAgain = () => {
     setFormSubmitted(false);
@@ -34,6 +42,44 @@ const IndexPage: React.FC<PageProps> = () => {
     ? styles.disabledBackground
     : "";
   const gameboysClasses = [[styles.gameboys], [hiddenClass]].join(" ");
+
+  const validate = (values: {
+    username: string;
+    email: string;
+    acceptance: boolean;
+  }) => {
+    const errors: FormErrors = {};
+    if (values.username.length < 2) {
+      errors.username = "Name is required";
+    }
+    if (!values.email.length) {
+      errors.email = "Email is required";
+    }
+    if (!values.acceptance) {
+      errors.acceptance = "test";
+    }
+    if (values.acceptance) {
+      errors.acceptance = "test";
+    }
+    if (!values.acceptance) {
+      errors.email = "test";
+    }
+    return errors;
+  };
+
+  const formik = useFormik<FormValues>({
+    initialValues: {
+      username: "",
+      email: "",
+      acceptance: false,
+    },
+    validate,
+    onSubmit: (values) => {
+      console.log(values);
+      setFormSubmitted(true);
+    },
+  });
+
   return (
     <Container>
       <aside className={`${styles.container__left} ${disabledBackgroundClass}`}>
@@ -43,7 +89,7 @@ const IndexPage: React.FC<PageProps> = () => {
           alt="gameboys"
         />
       </aside>
-      {!formSubmitted && !error && (
+      {!formSubmitted && (
         <section className={styles.container__center}>
           <header className={styles.titleHeader}>
             <h1>
@@ -53,7 +99,7 @@ const IndexPage: React.FC<PageProps> = () => {
             </h1>
           </header>
           <main>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={formik.handleSubmit}>
               <div className={styles.switch__container}>
                 <p>I swear, I’m a classic gameboy fan</p>
                 <Switch
@@ -65,32 +111,34 @@ const IndexPage: React.FC<PageProps> = () => {
               </div>
               <div className={styles.textfield__container}>
                 <TextField
-                  value=""
-                  onChange={() => {}}
+                  value={formik.values.username}
+                  onChange={formik.handleChange}
                   id="username-input"
                   name="username"
                   label="Name"
                   placeholder="e.g. Richard Parker"
                   disabled={disabled}
+                  error={formik.errors.username}
                 />
                 <TextField
-                  value=""
-                  onChange={() => {}}
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
                   id="email-input"
                   name="email"
                   label="Email"
                   placeholder="e.g. richard@gmail.com"
                   disabled={disabled}
+                  error={formik.errors.email}
                 />
               </div>
               <div className={styles.checkbox__container}>
                 <Checkbox
                   id="checkbox-1"
-                  name="checkbox"
-                  onChange={() => {}}
-                  checked={true}
+                  name="acceptance"
                   label="I have read and accept the"
                   disabled={disabled}
+                  onChange={formik.handleChange}
+                  checked={formik.values.acceptance}
                 />
                 <div className={styles.checkbox__containerLink}>
                   <Link to="#" disabled={disabled}>
@@ -106,7 +154,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </main>
         </section>
       )}
-      {formSubmitted && !error && (
+      {formSubmitted && (
         <div className={styles.container__center}>
           <span className={styles.formMessage}>
             Thank you [Name], for signing up!

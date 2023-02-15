@@ -17,6 +17,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "formik": "^2.2.9",
     "gatsby": "^5.5.0",
     "gatsby-plugin-image": "^3.6.0",
     "gatsby-plugin-sass": "^6.6.0",
@@ -26,7 +27,8 @@
     "nerdux-ui-system": "^0.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.58.0"
+    "sass": "^1.58.0",
+    "yup": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
