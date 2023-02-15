@@ -1,13 +1,19 @@
 import * as React from "react";
+import { useState, Fragment } from "react";
+
 import type { HeadFC, PageProps } from "gatsby";
+
 import { Container } from "../components/Container/Container";
 import { Link, Switch, TextField, Checkbox, Button } from "nerdux-ui-system";
 import Gameboys from "../../public/gameboys.png";
+import BackArrowIcon from "../Icons/BackArrowIcon";
+
 import * as styles from "./index.module.scss";
-import { useState } from "react";
+
 const IndexPage: React.FC<PageProps> = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,16 +49,15 @@ const IndexPage: React.FC<PageProps> = () => {
                 />
               </div>
               <div className={styles.textfield__container}>
-                <div className={styles.textfield__containerItem}>
-                  <TextField
-                    value=""
-                    onChange={() => {}}
-                    id="username-input"
-                    name="username"
-                    label="Name"
-                    placeholder="e.g. Richard Parker"
-                  />
-                </div>
+                <TextField
+                  value=""
+                  onChange={() => {}}
+                  id="username-input"
+                  name="username"
+                  label="Name"
+                  placeholder="e.g. Richard Parker"
+                  disabled={disabled}
+                />
                 <TextField
                   value=""
                   onChange={() => {}}
@@ -96,7 +101,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className={styles.container__center}>
           <span className={styles.formMessage}>Something went wrong.</span>
           <Button type="button" onClick={handleTryAgain}>
-            Try again
+            <Fragment>{BackArrowIcon()}</Fragment>Try again
           </Button>
         </div>
       )}
