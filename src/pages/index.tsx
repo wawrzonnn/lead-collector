@@ -3,7 +3,7 @@ import { useState, Fragment } from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import { Container } from "../components/Container/Container";
 import { Link, Switch, TextField, Checkbox, Button } from "nerdux-ui-system";
-import Gameboys from "../../public/gameboys.png";
+import Gameboys from "../images/gameboys.png";
 import BackArrowIcon from "../Icons/BackArrowIcon";
 import * as styles from "./index.module.scss";
 
