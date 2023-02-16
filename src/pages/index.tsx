@@ -7,7 +7,7 @@ import Gameboys from "../images/gameboys.png";
 import BackArrowIcon from "../Icons/BackArrowIcon";
 import * as styles from "./index.module.scss";
 
-const IndexPage: React.FC<PageProps> = () => {
+function IndexPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [error, setError] = useState(false);
   const [disabled, setDisabled] = useState(false);
@@ -151,7 +151,7 @@ const IndexPage: React.FC<PageProps> = () => {
       </aside>
     </Container>
   );
-};
+}
 
 export default IndexPage;
 
