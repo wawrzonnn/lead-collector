@@ -1,6 +1,5 @@
 node_modules/
 .cache/
-public
 .idea
 .vsc
 src/gatsby-types.d.ts
