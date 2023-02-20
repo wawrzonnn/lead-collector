@@ -56,8 +56,7 @@ const IndexPage: React.FC<PageProps> = () => {
       errors.email = "Email is required";
     }
     if (!values.acceptance) {
-      errors.acceptance =
-        "Accept the privacy policy.Accept the privacy policy. ";
+      errors.acceptance = "Acceptance of the privacy policy is required.";
     }
     return errors;
   };
@@ -130,18 +129,19 @@ const IndexPage: React.FC<PageProps> = () => {
                 <Checkbox
                   id="checkbox-1"
                   name="acceptance"
-                  label="I have read and accept the"
+                  label={
+                    <span>
+                      I have read and accept the
+                      <Link to="#" disabled={disabled}>
+                        privacy policy
+                      </Link>
+                    </span>
+                  }
                   disabled={disabled}
                   onChange={formik.handleChange}
                   checked={formik.values.acceptance}
                   error={formik.errors.acceptance}
                 />
-                <div className={styles.checkbox__containerLink}>
-                  <Link to="#" disabled={disabled}>
-                    {" "}
-                    privacy policy
-                  </Link>
-                </div>
               </div>
               <Button type="submit" onClick={() => {}} disabled={disabled}>
                 Sign me up!

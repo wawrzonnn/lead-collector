@@ -24,7 +24,7 @@
     "gatsby-plugin-sharp": "^5.6.0",
     "gatsby-source-filesystem": "^5.6.0",
     "gatsby-transformer-sharp": "^5.6.0",
-    "nerdux-ui-system": "^0.1.6",
+    "nerdux-ui-system": "^0.1.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.58.0",
