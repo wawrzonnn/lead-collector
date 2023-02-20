@@ -56,13 +56,8 @@ const IndexPage: React.FC<PageProps> = () => {
       errors.email = "Email is required";
     }
     if (!values.acceptance) {
-      errors.acceptance = "test1";
-    }
-    if (values.acceptance) {
-      errors.acceptance = "test2";
-    }
-    if (!values.acceptance) {
-      errors.email = "test3";
+      errors.acceptance =
+        "Accept the privacy policy.Accept the privacy policy. ";
     }
     return errors;
   };
@@ -139,6 +134,7 @@ const IndexPage: React.FC<PageProps> = () => {
                   disabled={disabled}
                   onChange={formik.handleChange}
                   checked={formik.values.acceptance}
+                  error={formik.errors.acceptance}
                 />
                 <div className={styles.checkbox__containerLink}>
                   <Link to="#" disabled={disabled}>
