@@ -75,10 +75,12 @@ body {
   display: flex;
   justify-content: center;
   margin: 1rem 0 3rem 0;
-  &--link {
+  a {
     margin-left: 0.4rem;
+    display: inline;
   }
 }
+
 .gameboys {
   position: relative;
   display: block;

@@ -17,16 +17,18 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "formik": "^2.2.9",
     "gatsby": "^5.5.0",
     "gatsby-plugin-image": "^3.6.0",
     "gatsby-plugin-sass": "^6.6.0",
     "gatsby-plugin-sharp": "^5.6.0",
     "gatsby-source-filesystem": "^5.6.0",
     "gatsby-transformer-sharp": "^5.6.0",
-    "nerdux-ui-system": "^0.1.5",
+    "nerdux-ui-system": "^0.1.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.58.0"
+    "sass": "^1.58.0",
+    "yup": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
