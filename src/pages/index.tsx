@@ -88,10 +88,6 @@ function IndexPage() {
             setFormSubmitted(true);
           } else if (response.status >= 500 && response.status < 600) {
             setError5xx(true);
-          } else {
-            response.json().then((data) => {
-              setErrorMessage(data.message);
-            });
           }
         })
         .catch((error) => {
