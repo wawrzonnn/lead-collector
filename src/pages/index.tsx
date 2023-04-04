@@ -89,12 +89,14 @@ function IndexPage() {
           } else if (response.status >= 500 && response.status < 600) {
             setError5xx(true);
           } else {
-            setErrorMessage("Something went wrong with your request.");
+            response.json().then((data) => {
+              setErrorMessage(data.message);
+            });
           }
         })
         .catch((error) => {
           console.error("Error:", error);
-          setErrorMessage("Something went wrong with your request.");
+          setErrorMessage(error.message);
         });
     },
   });
