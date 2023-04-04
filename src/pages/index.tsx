@@ -8,6 +8,7 @@ import { Error } from "../Icons/Error";
 import * as styles from "./index.module.scss";
 import { useFormik } from "formik";
 import Gameboys from "../images/gameboys.png";
+import { GameboysMobile } from "../Icons/GameboysMobile";
 
 interface FormValues {
   username: string;
@@ -105,6 +106,9 @@ function IndexPage() {
           src={Gameboys}
           alt="gameboys"
         />
+        <div className={styles.gameboysMobileUp}>
+          <GameboysMobile />
+        </div>
       </aside>
       {!formSubmitted && (
         <section className={styles.container__center}>
@@ -221,6 +225,9 @@ function IndexPage() {
           src={Gameboys}
           alt="gameboys"
         />
+        <div className={styles.gameboysMobileDown}>
+          <GameboysMobile />
+        </div>
       </aside>
     </Container>
   );

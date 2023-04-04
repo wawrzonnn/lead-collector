@@ -1,3 +1,9 @@
+@mixin small {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
 .container {
   max-width: 1440px;
   width: 100vw;
@@ -6,7 +12,8 @@
   position: relative;
   display: flex;
   justify-content: center;
-  @media only screen and (max-width: 768px) {
-    // padding: 0 8px;
+  @include small {
+    display: flex;
+    flex-direction: column;
   }
 }
