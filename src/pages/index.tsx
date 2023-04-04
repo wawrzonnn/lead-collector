@@ -23,9 +23,8 @@ interface FormErrors {
 
 function IndexPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [error4xx, setError4xx] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const [error5xx, setError5xx] = useState(false);
-  const [errorOther, setErrorOther] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [disabledBackground, setDisabledBackground] = useState(false);
@@ -87,17 +86,15 @@ function IndexPage() {
         .then((response) => {
           if (response.ok) {
             setFormSubmitted(true);
-          } else if (response.status >= 400 && response.status < 500) {
-            setError4xx(true);
           } else if (response.status >= 500 && response.status < 600) {
             setError5xx(true);
           } else {
-            setErrorOther(true);
+            setErrorMessage(true);
           }
         })
         .catch((error) => {
           console.error("Error:", error);
-          setErrorOther(true);
+          setErrorMessage(true);
         });
     },
   });
@@ -131,22 +128,14 @@ function IndexPage() {
                   disabled={false}
                 />
               </div>
-              {error4xx ||
-                (errorOther && (
-                  <div className={styles.errorApi__container}>
-                    <Error />
-                    {error4xx && (
-                      <p className={styles.error4xxMessage}>
-                        Something went wrong with your request.
-                      </p>
-                    )}
-                    {errorOther && (
-                      <p className={styles.errorOtherMessage}>
-                        Unexpected error occurred
-                      </p>
-                    )}
-                  </div>
-                ))}
+              {errorMessage && (
+                <div className={styles.errorMessage__container}>
+                  <Error />
+                  <p className={styles.errorMessage}>
+                    Something went wrong with your request.
+                  </p>
+                </div>
+              )}
               <div className={styles.textfield__container}>
                 <TextField
                   value={formik.values.username}

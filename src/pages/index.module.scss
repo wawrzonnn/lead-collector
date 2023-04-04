@@ -81,13 +81,13 @@ body {
   }
 }
 
-.errorApi__container {
+.errorMessage__container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.error4xxMessage .errorOtherMessage {
+.errorMessage {
   margin: 0.5rem;
   font-family: "Inter";
   font-style: normal;
