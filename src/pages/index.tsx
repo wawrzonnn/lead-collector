@@ -23,7 +23,7 @@ interface FormErrors {
 
 function IndexPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [error5xx, setError5xx] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -89,12 +89,12 @@ function IndexPage() {
           } else if (response.status >= 500 && response.status < 600) {
             setError5xx(true);
           } else {
-            setErrorMessage(true);
+            setErrorMessage("Something went wrong with your request.");
           }
         })
         .catch((error) => {
           console.error("Error:", error);
-          setErrorMessage(true);
+          setErrorMessage("Something went wrong with your request.");
         });
     },
   });
@@ -131,9 +131,7 @@ function IndexPage() {
               {errorMessage && (
                 <div className={styles.errorMessage__container}>
                   <Error />
-                  <p className={styles.errorMessage}>
-                    Something went wrong with your request.
-                  </p>
+                  <p className={styles.errorMessage}>{errorMessage}</p>
                 </div>
               )}
               <div className={styles.textfield__container}>
