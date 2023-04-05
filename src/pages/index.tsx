@@ -8,6 +8,7 @@ import { Error } from "../Icons/Error";
 import * as styles from "./index.module.scss";
 import { useFormik } from "formik";
 import Gameboys from "../images/gameboys.png";
+import { GameboysMobile } from "../Icons/GameboysMobile";
 
 interface FormValues {
   username: string;
@@ -86,13 +87,13 @@ function IndexPage() {
         .then((response) => {
           if (response.ok) {
             setFormSubmitted(true);
-          } else if (response.status >= 500 && response.status < 600) {
-            setError5xx(true);
+          } else if (response.status >= 400 && response.status < 500) {
+            setErrorMessage(response.statusText);
           }
         })
         .catch((error) => {
           console.error("Error:", error);
-          setErrorMessage(error.message);
+          setError5xx(true);
         });
     },
   });
@@ -101,10 +102,13 @@ function IndexPage() {
     <Container>
       <aside className={`${styles.container__left} ${disabledBackgroundClass}`}>
         <img
-          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
+        <div className={`${styles.gameboysMobileUp} ${hiddenClass}`}>
+          <GameboysMobile />
+        </div>
       </aside>
       {!formSubmitted && (
         <section className={styles.container__center}>
@@ -202,30 +206,31 @@ function IndexPage() {
         className={`${styles.container__right} ${disabledBackgroundClass}`}
       >
         <img
-          className={`${gameboysClasses} ${styles.gameboysDown}`}
+          className={`${gameboysClasses} ${styles.gameboysDownSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
         <img
-          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
         <img
-          className={`${gameboysClasses} ${styles.gameboysDown}`}
+          className={`${gameboysClasses} ${styles.gameboysDownSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
         <img
-          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
+        <div className={`${styles.gameboysMobileDown} ${hiddenClass}`}>
+          <GameboysMobile />
+        </div>
       </aside>
     </Container>
   );
 }
 
 export default IndexPage;
-
-export const Head: HeadFC = () => <title>Home Page</title>;
