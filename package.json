@@ -17,6 +17,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@testing-library/react": "^14.0.0",
     "formik": "^2.2.9",
     "gatsby": "^5.5.0",
     "gatsby-plugin-image": "^3.6.0",
