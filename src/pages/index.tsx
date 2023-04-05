@@ -102,11 +102,11 @@ function IndexPage() {
     <Container>
       <aside className={`${styles.container__left} ${disabledBackgroundClass}`}>
         <img
-          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
-        <div className={styles.gameboysMobileUp}>
+        <div className={`${styles.gameboysMobileUp} ${hiddenClass}`}>
           <GameboysMobile />
         </div>
       </aside>
@@ -206,26 +206,26 @@ function IndexPage() {
         className={`${styles.container__right} ${disabledBackgroundClass}`}
       >
         <img
-          className={`${gameboysClasses} ${styles.gameboysDown}`}
+          className={`${gameboysClasses} ${styles.gameboysDownSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
         <img
-          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
         <img
-          className={`${gameboysClasses} ${styles.gameboysDown}`}
+          className={`${gameboysClasses} ${styles.gameboysDownSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
         <img
-          className={`${gameboysClasses} ${styles.gameboysUp}`}
+          className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
           src={Gameboys}
           alt="gameboys"
         />
-        <div className={styles.gameboysMobileDown}>
+        <div className={`${styles.gameboysMobileDown} ${hiddenClass}`}>
           <GameboysMobile />
         </div>
       </aside>
@@ -234,5 +234,3 @@ function IndexPage() {
 }
 
 export default IndexPage;
-
-export const Head: HeadFC = () => <title>Home Page</title>;
