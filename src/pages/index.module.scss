@@ -65,20 +65,36 @@ body {
   display: flex;
   flex-direction: column;
   input {
-    margin: 0.5rem;
-    width: 360px;
-    height: 56px;
+    width: 100%;
+  }
+  > div {
+    margin-top: 16px;
   }
 }
 
 .checkbox__container {
   display: flex;
-  justify-content: center;
   margin: 1rem 0 3rem 0;
   a {
     margin-left: 0.4rem;
     display: inline;
   }
+}
+
+.errorMessage__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorMessage {
+  margin: 0.5rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #b3261e;
 }
 
 .gameboys {
