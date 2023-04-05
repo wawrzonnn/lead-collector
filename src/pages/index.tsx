@@ -87,13 +87,13 @@ function IndexPage() {
         .then((response) => {
           if (response.ok) {
             setFormSubmitted(true);
-          } else if (response.status >= 500 && response.status < 600) {
-            setError5xx(true);
+          } else if (response.status >= 400 && response.status < 500) {
+            setErrorMessage(response.statusText);
           }
         })
         .catch((error) => {
           console.error("Error:", error);
-          setErrorMessage(error.message);
+          setError5xx(true);
         });
     },
   });
