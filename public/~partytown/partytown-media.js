@@ -1,4 +1,4 @@
-/* Partytown 0.7.5 - MIT builder.io */
+/* Partytown 0.7.6 - MIT builder.io */
 ((e) => {
   const [t, s, n, r, i, a, o, d, u] = e.g;
   delete e.g;

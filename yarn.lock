@@ -10162,10 +10162,10 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nerdux-ui-system@^0.1.7:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/nerdux-ui-system/-/nerdux-ui-system-0.0.1.tgz#d17b850463715a9fe200cf3371ecd8eba84771f0"
-  integrity sha512-svMZPyCnvRL26xQ3gZ1OiNS43jG2KLoxbUklDHXZ1j0esDZojAc4bfBRUw5vK1fHCnr0p2ajrc3pAyeyG6HIOg==
+nerdux-ui-system@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/nerdux-ui-system/-/nerdux-ui-system-0.0.2.tgz#925771e7b3f13d0b770e776ab33512567bf3a6a2"
+  integrity sha512-a2o8qcz6YFPacaSS+ZvLZFM+KUy5BrTb4//fL0dBW+DAkIlJDcD3VtVm4fHEahJS69ylg4DuFg0LT2JIZazy4Q==
   dependencies:
     "@storybook/react" "^6.5.16"
     "@typescript-eslint/parser" "^5.56.0"

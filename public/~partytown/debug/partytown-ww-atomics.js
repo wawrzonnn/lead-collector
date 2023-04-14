@@ -1,4 +1,4 @@
-/* Partytown 0.7.5 - MIT builder.io */
+/* Partytown 0.7.6 - MIT builder.io */
 ((self) => {
   const WinIdKey = Symbol();
   const InstanceIdKey = Symbol();
@@ -1122,7 +1122,11 @@
     env.$runWindowLoadEvent$ = 1;
     scriptContent =
       `with(this){${scriptContent
-        .replace(/\bthis\b/g, "(thi$(this)?window:this)")
+        .replace(/\bthis\b/g, (match, offset, originalStr) =>
+          offset > 0 && "$" !== originalStr[offset - 1]
+            ? "(thi$(this)?window:this)"
+            : match
+        )
         .replace(/\/\/# so/g, "//Xso")}\n;function thi$(t){return t===this}};${(
         webWorkerCtx.$config$.globalFns || []
       )
@@ -1179,7 +1183,7 @@
   };
   const resolveUrl = (env, url, type) => resolveToUrl(env, url, type) + "";
   const getPartytownScript = () =>
-    `<script src="${partytownLibUrl("partytown.js?v=0.7.5")}"><\/script>`;
+    `<script src="${partytownLibUrl("partytown.js?v=0.7.6")}"><\/script>`;
   const createImageConstructor = (env) =>
     class HTMLImageElement {
       constructor() {
@@ -1984,7 +1988,7 @@
                     ApplyPathKey,
                   ];
                   webWorkerCtx.$importScripts$(
-                    partytownLibUrl("partytown-media.js?v=0.7.5")
+                    partytownLibUrl("partytown-media.js?v=0.7.6")
                   );
                   webWorkerCtx.$initWindowMedia$ = self.$bridgeFromMedia$;
                   delete self.$bridgeFromMedia$;
@@ -2366,7 +2370,12 @@
             for (key in navigator) {
               nav[key] = navigator[key];
             }
-            return nav;
+            return new Proxy(nav, {
+              set(_, propName, propValue) {
+                navigator[propName] = propValue;
+                return true;
+              },
+            });
           })(env);
         }
         get origin() {

@@ -1,4 +1,4 @@
-/* Partytown 0.7.5 - MIT builder.io */
+/* Partytown 0.7.6 - MIT builder.io */
 const resolves = new Map();
 
 const swMessageError = (accessReq, $error$) => ({
@@ -62,7 +62,7 @@ self.onfetch = (ev) => {
   if (pathname.endsWith("sw.html")) {
     ev.respondWith(
       response(
-        '<!DOCTYPE html><html><head><meta charset="utf-8"><script src="./partytown-sandbox-sw.js?v=0.7.5"></script></head></html>'
+        '<!DOCTYPE html><html><head><meta charset="utf-8"><script src="./partytown-sandbox-sw.js?v=0.7.6"></script></head></html>'
       )
     );
   } else {

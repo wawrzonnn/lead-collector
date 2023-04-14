@@ -1,4 +1,4 @@
-/* Partytown 0.7.5 - MIT builder.io */
+/* Partytown 0.7.6 - MIT builder.io */
 !(function (
   win,
   doc,
@@ -70,7 +70,7 @@
     sandbox.src =
       libPath +
       "partytown-" +
-      (isAtomics ? "atomics.js?v=0.7.5" : "sandbox-sw.html?" + Date.now());
+      (isAtomics ? "atomics.js?v=0.7.6" : "sandbox-sw.html?" + Date.now());
     doc.body.appendChild(sandbox);
   }
   function fallback(i, script) {
