@@ -3,3 +3,4 @@ node_modules/
 .idea
 .vsc
 src/gatsby-types.d.ts
+coverage
