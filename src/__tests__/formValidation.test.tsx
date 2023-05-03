@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Index from "../pages/index";
 import "@testing-library/jest-dom/extend-expect";
@@ -46,18 +46,9 @@ test("validation should fail when consentsAccepted is false", async () => {
   const submitButton = screen.getByText("Sign me up!");
   fireEvent.change(checkbox, { target: { checked: false } });
   userEvent.click(submitButton);
-  expect(
-    screen.getByText("Acceptance of the privacy policy is required.")
-  ).toBeInTheDocument();
-});
-
-test("validation should fail when consentsAccepted is false", async () => {
-  render(<Index />);
-  const checkbox = screen.getByRole("checkbox");
-  const submitButton = screen.getByText("Sign me up!");
-  fireEvent.change(checkbox, { target: { checked: false } });
-  userEvent.click(submitButton);
-  expect(
-    screen.getByText("Acceptance of the privacy policy is required.")
-  ).toBeInTheDocument();
+  await waitFor(() => {
+    expect(
+      screen.getByText("Acceptance of the privacy policy is required.")
+    ).toBeInTheDocument();
+  });
 });
