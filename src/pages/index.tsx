@@ -103,7 +103,7 @@ function IndexPage() {
       <aside className={`${styles.container__left} ${disabledBackgroundClass}`}>
         <img
           className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
-          src={"../images/gameboys.png"}
+          src={Gameboys}
           alt="gameboys"
         />
         <div className={`${styles.gameboysMobileUp} ${hiddenClass}`}>

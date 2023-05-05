@@ -4,3 +4,4 @@ node_modules/
 .vsc
 src/gatsby-types.d.ts
 coverage
+public
