@@ -52,10 +52,10 @@ function IndexPage() {
     acceptance: boolean;
   }) => {
     const errors: FormErrors = {};
-    if (values.username.length < 2) {
+    if (values.username.length < 2 || /\d/.test(values.username)) {
       errors.username = "Name is required";
     }
-    if (!values.email.length) {
+    if (!values.email.length || !values.email.includes("@")) {
       errors.email = "Email is required";
     }
     if (!values.acceptance) {
@@ -176,7 +176,12 @@ function IndexPage() {
                   error={formik.errors.acceptance}
                 />
               </div>
-              <Button type="button" onClick={() => {}} disabled={disabled}>
+              <Button
+                type="submit"
+                onClick={() => {}}
+                disabled={disabled}
+                variant={"primary"}
+              >
                 Sign me up!
               </Button>
             </form>
@@ -197,7 +202,7 @@ function IndexPage() {
       {error5xx && (
         <div className={styles.container__center}>
           <span className={styles.formMessage}>Something went wrong.</span>
-          <Button type="button" onClick={handleTryAgain}>
+          <Button type="button" onClick={handleTryAgain} variant={"primary"}>
             <Fragment>{BackArrowIcon()}</Fragment>Try again
           </Button>
         </div>
@@ -207,22 +212,22 @@ function IndexPage() {
       >
         <img
           className={`${gameboysClasses} ${styles.gameboysDownSlide}`}
-          src={Gameboys}
+          src={"../images/gameboys.png"}
           alt="gameboys"
         />
         <img
           className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
-          src={Gameboys}
+          src={"../images/gameboys.png"}
           alt="gameboys"
         />
         <img
           className={`${gameboysClasses} ${styles.gameboysDownSlide}`}
-          src={Gameboys}
+          src={"../images/gameboys.png"}
           alt="gameboys"
         />
         <img
           className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
-          src={Gameboys}
+          src={"../images/gameboys.png"}
           alt="gameboys"
         />
         <div className={`${styles.gameboysMobileDown} ${hiddenClass}`}>
