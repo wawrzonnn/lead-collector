@@ -52,9 +52,8 @@ describe("IndexPage form submission integration test", () => {
   });
 
   it("should display error when form submission failed", async () => {
-    jest.spyOn(window, "fetch").mockImplementationOnce(() => {
-      return Promise.reject(new Error("error"));
-    });
+    const mockFetch = jest.spyOn(global, "fetch");
+    mockFetch.mockRejectedValueOnce({ error: "error" });
 
     fireEvent.change(nameInput, { target: { value: "Richard Parker" } });
     fireEvent.change(emailInput, { target: { value: "richard@gmail.com" } });
@@ -65,5 +64,7 @@ describe("IndexPage form submission integration test", () => {
       const errorMessage = screen.getByTestId("error-message");
       expect(errorMessage).toBeInTheDocument();
     });
+
+    mockFetch.mockRestore();
   });
 });
