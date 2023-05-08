@@ -103,7 +103,7 @@ function IndexPage() {
       <aside className={`${styles.container__left} ${disabledBackgroundClass}`}>
         <img
           className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
-          src={Gameboys}
+          src={"../images/gameboys.png"}
           alt="gameboys"
         />
         <div className={`${styles.gameboysMobileUp} ${hiddenClass}`}>
@@ -133,7 +133,12 @@ function IndexPage() {
               {errorMessage && (
                 <div className={styles.errorMessage__container}>
                   <Error />
-                  <p className={styles.errorMessage}>{errorMessage}</p>
+                  <p
+                    data-testid="error-message"
+                    className={styles.errorMessage}
+                  >
+                    {errorMessage}
+                  </p>
                 </div>
               )}
               <div className={styles.textfield__container}>
@@ -179,7 +184,7 @@ function IndexPage() {
               <Button
                 type="submit"
                 onClick={() => {}}
-                disabled={disabled}
+                disabled={!formik.isValid}
                 variant={"primary"}
               >
                 Sign me up!
@@ -190,7 +195,7 @@ function IndexPage() {
       )}
       {formSubmitted && (
         <div className={styles.container__center}>
-          <span className={styles.formMessage}>
+          <span data-testid="success-message" className={styles.formMessage}>
             Thank you {formik.values.username}, for signing up!
           </span>
           <span className={styles.formMessageInfo}>
