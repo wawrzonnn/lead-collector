@@ -70,8 +70,9 @@ function IndexPage() {
       email: "",
       acceptance: false,
     },
-    validate,
+    // validate,
     onSubmit: (values) => {
+      console.log("values:", values);
       fetch("http://139.59.154.199:49160/api/v1/leads", {
         method: "POST",
         headers: {
@@ -85,6 +86,8 @@ function IndexPage() {
         }),
       })
         .then((response) => {
+          console.log("response.status", response.status);
+          console.log("response.statusText", response.statusText);
           if (response.ok) {
             setFormSubmitted(true);
           } else if (response.status >= 400 && response.status < 500) {
@@ -92,7 +95,7 @@ function IndexPage() {
           }
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.log("error:", error);
           setError5xx(true);
         });
     },
@@ -183,7 +186,10 @@ function IndexPage() {
               </div>
               <Button
                 type="submit"
-                onClick={() => {}}
+                onClick={() => {
+                  console.log("kupa");
+                  formik.handleSubmit();
+                }}
                 disabled={!formik.isValid}
                 variant={"primary"}
               >
