@@ -7,7 +7,6 @@ import BackArrowIcon from "../Icons/BackArrowIcon";
 import { Error } from "../Icons/Error";
 import * as styles from "./index.module.scss";
 import { useFormik } from "formik";
-import Gameboys from "../images/gameboys.png";
 import { GameboysMobile } from "../Icons/GameboysMobile";
 
 interface FormValues {
@@ -52,6 +51,7 @@ function IndexPage() {
     acceptance: boolean;
   }) => {
     const errors: FormErrors = {};
+    console.log("errors", errors);
     if (values.username.length < 2 || /\d/.test(values.username)) {
       errors.username = "Name is required";
     }
@@ -72,6 +72,7 @@ function IndexPage() {
     },
     validate,
     onSubmit: (values) => {
+      console.log("values:", values);
       fetch("http://139.59.154.199:49160/api/v1/leads", {
         method: "POST",
         headers: {
@@ -85,25 +86,30 @@ function IndexPage() {
         }),
       })
         .then((response) => {
-          if (response.ok) {
+          console.log("response.status", response.status);
+          console.log("response.statusText", response.statusText);
+          if (response.status >= 200 && response.status < 300) {
             setFormSubmitted(true);
           } else if (response.status >= 400 && response.status < 500) {
             setErrorMessage(response.statusText);
           }
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.log("error:", error);
           setError5xx(true);
         });
     },
   });
+
+  console.log("formik.isValid", formik.isValid);
+  console.log("formik.values", formik.values);
 
   return (
     <Container>
       <aside className={`${styles.container__left} ${disabledBackgroundClass}`}>
         <img
           className={`${gameboysClasses} ${styles.gameboysUpSlide}`}
-          src={Gameboys}
+          src={"../images/gameboys.png"}
           alt="gameboys"
         />
         <div className={`${styles.gameboysMobileUp} ${hiddenClass}`}>
@@ -133,7 +139,12 @@ function IndexPage() {
               {errorMessage && (
                 <div className={styles.errorMessage__container}>
                   <Error />
-                  <p className={styles.errorMessage}>{errorMessage}</p>
+                  <p
+                    data-testid="error-message"
+                    className={styles.errorMessage}
+                  >
+                    {errorMessage}
+                  </p>
                 </div>
               )}
               <div className={styles.textfield__container}>
@@ -163,7 +174,7 @@ function IndexPage() {
                   id="checkbox-1"
                   name="acceptance"
                   label={
-                    <span>
+                    <span data-testid="checkbox-consent">
                       I have read and accept the
                       <Link to="#" disabled={disabled}>
                         privacy policy
@@ -178,8 +189,10 @@ function IndexPage() {
               </div>
               <Button
                 type="submit"
-                onClick={() => {}}
-                disabled={disabled}
+                onClick={() => {
+                  formik.handleSubmit();
+                }}
+                disabled={!formik.isValid}
                 variant={"primary"}
               >
                 Sign me up!
@@ -190,7 +203,7 @@ function IndexPage() {
       )}
       {formSubmitted && (
         <div className={styles.container__center}>
-          <span className={styles.formMessage}>
+          <span data-testid="success-message" className={styles.formMessage}>
             Thank you {formik.values.username}, for signing up!
           </span>
           <span className={styles.formMessageInfo}>
