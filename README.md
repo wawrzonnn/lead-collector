@@ -2,6 +2,10 @@
   Lead  Collector
 </h1>
 
+<p align="center">
+  <a href="https://lead-collector-jwp.vercel.app/">View live demo</a>
+</p>
+
 ### Overview
 
 This project is written in `React` and `Typescript` and will focus on lead collection. We will implement a simple form with input validation, and use existing backend service.
