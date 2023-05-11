@@ -9,11 +9,11 @@ describe("IndexPage form submission integration test", () => {
     checkbox: Node | Window;
 
   beforeEach(() => {
-    const { getByRole, getByLabelText, getByText } = render(<Index />);
+    const { getByLabelText, getByText, getByTestId } = render(<Index />);
     submitButton = getByText("Sign me up!");
     nameInput = getByLabelText("Name");
     emailInput = getByLabelText("Email");
-    checkbox = getByRole("checkbox");
+    checkbox = getByTestId("checkbox-consent");
   });
 
   it("should disable submit button when form payload does not pass validation", async () => {
@@ -51,7 +51,7 @@ describe("IndexPage form submission integration test", () => {
     fireEvent.change(emailInput, { target: { value: "richard@gmail.com" } });
     fireEvent.click(checkbox);
 
-    fireEvent.click(submitButton);
+    fireEvent.submit(submitButton);
 
     await waitFor(() => {
       const successMessage = screen.getByTestId("success-message");

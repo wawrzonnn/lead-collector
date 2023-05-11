@@ -7,7 +7,6 @@ import BackArrowIcon from "../Icons/BackArrowIcon";
 import { Error } from "../Icons/Error";
 import * as styles from "./index.module.scss";
 import { useFormik } from "formik";
-import Gameboys from "../images/gameboys.png";
 import { GameboysMobile } from "../Icons/GameboysMobile";
 
 interface FormValues {
@@ -52,6 +51,7 @@ function IndexPage() {
     acceptance: boolean;
   }) => {
     const errors: FormErrors = {};
+    console.log("errors", errors);
     if (values.username.length < 2 || /\d/.test(values.username)) {
       errors.username = "Name is required";
     }
@@ -70,7 +70,7 @@ function IndexPage() {
       email: "",
       acceptance: false,
     },
-    // validate,
+    validate,
     onSubmit: (values) => {
       console.log("values:", values);
       fetch("http://139.59.154.199:49160/api/v1/leads", {
@@ -88,7 +88,7 @@ function IndexPage() {
         .then((response) => {
           console.log("response.status", response.status);
           console.log("response.statusText", response.statusText);
-          if (response.ok) {
+          if (response.status >= 200 && response.status < 300) {
             setFormSubmitted(true);
           } else if (response.status >= 400 && response.status < 500) {
             setErrorMessage(response.statusText);
@@ -100,6 +100,9 @@ function IndexPage() {
         });
     },
   });
+
+  console.log("formik.isValid", formik.isValid);
+  console.log("formik.values", formik.values);
 
   return (
     <Container>
@@ -171,7 +174,7 @@ function IndexPage() {
                   id="checkbox-1"
                   name="acceptance"
                   label={
-                    <span>
+                    <span data-testid="checkbox-consent">
                       I have read and accept the
                       <Link to="#" disabled={disabled}>
                         privacy policy
@@ -187,7 +190,6 @@ function IndexPage() {
               <Button
                 type="submit"
                 onClick={() => {
-                  console.log("kupa");
                   formik.handleSubmit();
                 }}
                 disabled={!formik.isValid}
