@@ -6,7 +6,7 @@
 
 .container {
   max-width: 1440px;
-  width: 100vw;
+  width: 100%;
   background: #b23386;
   overflow: hidden;
   position: relative;
@@ -15,6 +15,5 @@
   @include small {
     display: flex;
     flex-direction: column;
-    // height: 100%;
   }
 }
