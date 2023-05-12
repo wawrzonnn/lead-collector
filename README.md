@@ -40,4 +40,4 @@ The form will allow users to enter data such as e-mail address, and then make us
 
    Your site is now running at http://localhost:8000
 
-   To view the deployed version, click <a href="insert-link-to-deploy-here">here</a>.
+   To view the deployed version, click <a href="https://lead-collector-black.vercel.app/">here</a>.
