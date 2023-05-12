@@ -9627,10 +9627,10 @@ neo-async@^2.6.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nerdux-ui-system@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/nerdux-ui-system/-/nerdux-ui-system-0.0.10.tgz#94fb2bd4ece93886574dd3ddc25db2e9f10cb219"
-  integrity sha512-pq0sFXDpDzAysJpYscc16xIveIYGdEP3O8y9zKHz9zFkPN8a5M41HTygVJuDw6hv6m+V2/2iycgwOdSz8Bg7Rw==
+nerdux-ui-system@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/nerdux-ui-system/-/nerdux-ui-system-0.0.11.tgz#ee392fbdfa86dc1cf8e3fd5b5c13b48d0eacfecb"
+  integrity sha512-mADnnBH6c0YkWtaBwXcJNYU8k1h7aujqqH9Bmfpx/MYLOOlnx1F+uQzF2xwmGarDsAQB8b4c3g6PSzUNktpbAw==
   dependencies:
     "@storybook/addon-mdx-gfm" "^7.0.7"
     "@storybook/react" "^7.0.7"

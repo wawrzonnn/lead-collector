@@ -39,3 +39,5 @@ The form will allow users to enter data such as e-mail address, and then make us
 3. **Open the code and start working**
 
    Your site is now running at http://localhost:8000
+
+   To view the deployed version, click <a href="https://lead-collector-black.vercel.app/">here</a>.
