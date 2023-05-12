@@ -192,7 +192,7 @@ function IndexPage() {
                 onClick={() => {
                   formik.handleSubmit();
                 }}
-                disabled={!formik.isValid}
+                disabled={!formik.isValid || disabled}
                 variant={"primary"}
               >
                 Sign me up!
