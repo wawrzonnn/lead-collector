@@ -175,7 +175,7 @@ function IndexPage() {
                   name="acceptance"
                   label={
                     <span data-testid="checkbox-consent">
-                      I have read and accept the
+                      I have read and accept the dupa
                       <Link to="#" disabled={disabled}>
                         privacy policy
                       </Link>
