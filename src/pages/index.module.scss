@@ -131,6 +131,13 @@ body {
     margin-bottom: 2rem;
   }
 }
+.button__container:hover button {
+  @include small {
+    background-color: white;
+    box-shadow: none;
+    color: black;
+  }
+}
 
 .errorMessage__container {
   display: flex;
