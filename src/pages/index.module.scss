@@ -106,6 +106,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    @include small {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      border-radius: 0;
+    }
   }
   > div {
     margin-top: 16px;
