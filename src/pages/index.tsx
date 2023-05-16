@@ -212,16 +212,18 @@ function IndexPage() {
                     }
                   />
                 </div>
-                <Button
-                  type="submit"
-                  onClick={() => {
-                    formik.handleSubmit();
-                  }}
-                  disabled={!formik.isValid || disabled}
-                  variant={"primary"}
-                >
-                  Sign me up!
-                </Button>
+                <div className={styles.button__container}>
+                  <Button
+                    type="submit"
+                    onClick={() => {
+                      formik.handleSubmit();
+                    }}
+                    disabled={!formik.isValid || disabled}
+                    variant={"primary"}
+                  >
+                    Sign me up!
+                  </Button>
+                </div>
               </form>
             </main>
           </section>
