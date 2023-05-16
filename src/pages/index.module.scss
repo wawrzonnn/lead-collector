@@ -65,6 +65,7 @@ body {
     @include small {
       width: 100%;
       height: auto;
+      padding: 5%;
     }
   }
   &__right {
@@ -90,7 +91,7 @@ body {
   line-height: 24px;
   @include small {
     margin-bottom: 1rem;
-    min-width: 350px;
+    min-width: 320px;
   }
   p {
     margin-right: 0.5rem;
@@ -102,13 +103,16 @@ body {
   flex-direction: column;
   input {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   > div {
     margin-top: 16px;
     margin-bottom: 1rem;
     @include small {
       margin-top: 1rem;
-      min-width: 350px;
+      // min-width: 350px;
     }
   }
 }
@@ -122,7 +126,7 @@ body {
   }
   @include small {
     margin-top: 1rem;
-    min-width: 350px;
+    min-width: 320px;
   }
 }
 
