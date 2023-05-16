@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, Fragment } from "react";
+import { useState, useEffect, Fragment } from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import { Container } from "../components/Container/Container";
 import { Link, Switch, TextField, Checkbox, Button } from "nerdux-ui-system";
@@ -31,6 +31,7 @@ function IndexPage() {
 
   const handleTryAgain = () => {
     setFormSubmitted(false);
+    setError5xx(false);
   };
 
   const handleSwitch = () => {
@@ -55,8 +56,12 @@ function IndexPage() {
     if (values.username.length < 2 || /\d/.test(values.username)) {
       errors.username = "Name is required";
     }
-    if (!values.email.length || !values.email.includes("@")) {
+    if (!values.email.length) {
       errors.email = "Email is required";
+    } else if (
+      !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(values.email)
+    ) {
+      errors.email = "Invalid email format";
     }
     if (!values.acceptance) {
       errors.acceptance = "Acceptance of the privacy policy is required.";
@@ -101,8 +106,11 @@ function IndexPage() {
     },
   });
 
-  console.log("formik.isValid", formik.isValid);
-  console.log("formik.values", formik.values);
+  useEffect(() => {
+    if (!formSubmitted) {
+      formik.resetForm();
+    }
+  }, [formSubmitted]);
 
   return (
     <body className={disabledBackgroundClass}>
@@ -153,23 +161,33 @@ function IndexPage() {
                 <div className={styles.textfield__container}>
                   <TextField
                     value={formik.values.username}
+                    onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     id="username-input"
                     name="username"
                     label="Name"
                     placeholder="e.g. Richard Parker"
                     disabled={disabled}
-                    error={formik.errors.username}
+                    error={
+                      formik.touched.username && formik.errors.username
+                        ? formik.errors.username
+                        : undefined
+                    }
                   />
                   <TextField
                     value={formik.values.email}
+                    onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     id="email-input"
                     name="email"
                     label="Email"
                     placeholder="e.g. richard@gmail.com"
                     disabled={disabled}
-                    error={formik.errors.email}
+                    error={
+                      formik.touched.email && formik.errors.email
+                        ? formik.errors.email
+                        : undefined
+                    }
                   />
                 </div>
                 <div className={styles.checkbox__container}>
@@ -178,7 +196,7 @@ function IndexPage() {
                     name="acceptance"
                     label={
                       <span data-testid="checkbox-consent">
-                        I have read and accept the dupa
+                        I have read and accept the
                         <Link to="#" disabled={disabled}>
                           privacy policy
                         </Link>
@@ -187,7 +205,11 @@ function IndexPage() {
                     disabled={disabled}
                     onChange={formik.handleChange}
                     checked={formik.values.acceptance}
-                    error={formik.errors.acceptance}
+                    error={
+                      formik.touched.acceptance && formik.errors.acceptance
+                        ? formik.errors.acceptance
+                        : undefined
+                    }
                   />
                 </div>
                 <Button
@@ -215,11 +237,14 @@ function IndexPage() {
             </span>
           </div>
         )}
-        {error5xx && (
+        {!formSubmitted && error5xx && (
           <div className={styles.container__center}>
             <span className={styles.formMessage}>Something went wrong.</span>
             <Button type="button" onClick={handleTryAgain} variant={"primary"}>
-              <Fragment>{BackArrowIcon()}</Fragment>Try again
+              <span className={styles.backArrowIcon}>
+                <Fragment>{BackArrowIcon()}</Fragment>
+              </span>
+              Try again
             </Button>
           </div>
         )}
