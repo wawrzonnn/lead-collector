@@ -123,11 +123,13 @@ function IndexPage() {
             src={"../images/gameboys.png"}
             alt="gameboys"
           />
-          <div className={`${styles.gameboysMobileUp} ${hiddenClass}`}>
-            <GameboysMobile />
+          <div className={styles.gameboysMobileUp}>
+            <span className={hiddenClass}>
+              <GameboysMobile />
+            </span>
           </div>
         </aside>
-        {!formSubmitted && (
+        {!formSubmitted && !error5xx && (
           <section className={styles.container__center}>
             <header className={styles.titleHeader}>
               <h1>
@@ -197,7 +199,10 @@ function IndexPage() {
                     label={
                       <span data-testid="checkbox-consent">
                         I have read and accept the
-                        <Link to="#" disabled={disabled}>
+                        <Link
+                          to="https://www.example.com/privacy-policy"
+                          disabled={disabled}
+                        >
                           privacy policy
                         </Link>
                       </span>
@@ -242,12 +247,20 @@ function IndexPage() {
         {!formSubmitted && error5xx && (
           <div className={styles.container__center}>
             <span className={styles.formMessage}>Something went wrong.</span>
-            <Button type="button" onClick={handleTryAgain} variant={"primary"}>
-              <span className={styles.backArrowIcon}>
-                <Fragment>{BackArrowIcon()}</Fragment>
-              </span>
-              Try again
-            </Button>
+            <div
+              className={`${styles.button__container} ${styles.tryAgainButton__container}`}
+            >
+              <Button
+                type="button"
+                onClick={handleTryAgain}
+                variant={"primary"}
+              >
+                <span className={styles.backArrowIcon}>
+                  <Fragment>{BackArrowIcon()}</Fragment>
+                </span>
+                Try again
+              </Button>
+            </div>
           </div>
         )}
         <aside
@@ -273,8 +286,10 @@ function IndexPage() {
             src={"../images/gameboys.png"}
             alt="gameboys"
           />
-          <div className={`${styles.gameboysMobileDown} ${hiddenClass}`}>
-            <GameboysMobile />
+          <div className={styles.gameboysMobileDown}>
+            <span className={hiddenClass}>
+              <GameboysMobile />
+            </span>
           </div>
         </aside>
       </Container>
