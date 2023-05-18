@@ -25,7 +25,7 @@ body {
 
 .titleHeader {
   text-align: left;
-  padding-top: 15%;
+  padding-top: 20%;
   h1 {
     font-size: 45px;
     font-family: "Inter";
@@ -38,24 +38,26 @@ body {
     }
   }
   span {
+    font-size: 45px;
+    font-family: "Inter";
+    font-style: normal;
     display: inline-block;
     color: #b23386;
     margin-bottom: 2.5rem;
     font-weight: 600;
   }
   @include small {
-    // min-width: 350px;
+    padding-top: 10%;
   }
 }
 
 .container {
   &__left {
     width: 10%;
-    height: 100vh;
     background: #b23386;
     @include small {
       width: 100%;
-      height: 160px;
+      height: 15%;
     }
   }
   &__center {
@@ -64,7 +66,7 @@ body {
     background: white;
     @include small {
       width: 100%;
-      height: auto;
+      height: 70%;
       padding: 5%;
     }
   }
@@ -74,7 +76,7 @@ body {
     display: flex;
     @include small {
       width: 100%;
-      height: 160px;
+      height: 15%;
     }
   }
 }
@@ -101,6 +103,7 @@ body {
 .textfield__container {
   display: flex;
   flex-direction: column;
+  max-width: 350px;
   input {
     width: 100%;
     display: flex;
@@ -137,15 +140,23 @@ body {
 }
 
 .button__container {
+  padding-bottom: 20%;
   @include small {
-    margin-bottom: 2rem;
+    padding-bottom: 10%;
   }
 }
+
 .button__container:hover button {
   @include small {
     background-color: white;
     box-shadow: none;
     color: black;
+  }
+}
+
+.tryAgainButton__container {
+  @include small {
+    padding-bottom: 30%;
   }
 }
 
@@ -218,8 +229,8 @@ body {
   }
 }
 
-/* Dodanie animacji do Gameboy */
 .gameboysMobileUp {
+  height: 160px;
   left: -100px;
   position: relative;
   animation: slideRight 12s linear infinite;
@@ -239,6 +250,7 @@ body {
 }
 
 .gameboysMobileDown {
+  height: 160px;
   left: -100px;
   position: relative;
   animation: slideLeft 12s linear infinite;
@@ -268,14 +280,19 @@ body {
   margin-bottom: 1.5rem;
   @include small {
     margin-bottom: 2.5rem;
+    margin-top: 2rem;
     font-size: 36px;
     line-height: 44px;
   }
-  &--info {
+  &--Info {
+    display: inline-block;
     font-weight: 400;
     font-size: 22px;
     line-height: 28px;
     color: #b23386;
+    @include small {
+      padding-bottom: 6rem;
+    }
   }
 }
 
