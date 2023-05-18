@@ -78,7 +78,7 @@ function IndexPage() {
     validate,
     onSubmit: (values) => {
       console.log("values:", values);
-      fetch("http://139.59.154.199:49160/api/v1/leads", {
+      fetch("https://training.nerdbord.io/api/v1/leads", {
         method: "POST",
         headers: {
           Authorization: "secret_token",
@@ -97,6 +97,7 @@ function IndexPage() {
             setFormSubmitted(true);
           } else if (response.status >= 400 && response.status < 500) {
             setErrorMessage(response.statusText);
+            console.log(response.statusText);
           }
         })
         .catch((error) => {

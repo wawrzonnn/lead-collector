@@ -10,11 +10,13 @@
   margin: 0 auto;
   background: #b23386;
   overflow: hidden;
+  height: 100vh;
   position: relative;
   display: flex;
   justify-content: center;
   @include small {
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
 }
