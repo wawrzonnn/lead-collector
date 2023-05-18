@@ -96,8 +96,8 @@ function IndexPage() {
           if (response.status >= 200 && response.status < 300) {
             setFormSubmitted(true);
           } else if (response.status >= 400 && response.status < 500) {
+            console.log("dupa", response.statusText);
             setErrorMessage(response.statusText);
-            console.log(response.statusText);
           }
         })
         .catch((error) => {
