@@ -136,6 +136,10 @@ body {
   a {
     margin-left: 0.4rem;
     display: inline;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
   }
   @include small {
     margin-top: 1rem;
