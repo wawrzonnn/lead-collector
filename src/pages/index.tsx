@@ -25,6 +25,7 @@ function IndexPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [error5xx, setError5xx] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [disabledBackground, setDisabledBackground] = useState(false);
@@ -53,13 +54,15 @@ function IndexPage() {
   }) => {
     const errors: FormErrors = {};
     console.log("errors", errors);
-    if (values.username.length < 2 || /\d/.test(values.username)) {
+    if (values.username.trim().length < 2 || /\d/.test(values.username)) {
       errors.username = "Name is required";
     }
-    if (!values.email.length) {
+    if (!values.email.trim().length) {
       errors.email = "Email is required";
     } else if (
-      !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(values.email)
+      !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(
+        values.email.trim()
+      )
     ) {
       errors.email = "Invalid email format";
     }
@@ -77,6 +80,7 @@ function IndexPage() {
     },
     validate,
     onSubmit: (values) => {
+      setIsLoading(true);
       console.log("values:", values);
       fetch("https://training.nerdbord.io/api/v1/leads", {
         method: "POST",
@@ -95,14 +99,17 @@ function IndexPage() {
           console.log("response.statusText", response.statusText);
           if (response.status >= 200 && response.status < 300) {
             setFormSubmitted(true);
+            setIsLoading(false);
           } else if (response.status >= 400 && response.status < 500) {
             console.log("dupa", response.statusText);
             setErrorMessage(response.statusText);
+            setIsLoading(false);
           }
         })
         .catch((error) => {
           console.log("error:", error);
           setError5xx(true);
+          setIsLoading(false);
         });
     },
   });
@@ -226,6 +233,7 @@ function IndexPage() {
                     }}
                     disabled={!formik.isValid || disabled}
                     variant={"primary"}
+                    isLoading={isLoading}
                   >
                     Sign me up!
                   </Button>
