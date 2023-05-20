@@ -133,10 +133,14 @@ body {
 .checkbox__container {
   display: flex;
   margin: 1rem 0 3rem 0;
+  span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+  }
   a {
     margin-left: 0.4rem;
     display: inline;
-    font-family: "Inter";
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
