@@ -101,7 +101,6 @@ function IndexPage() {
             setFormSubmitted(true);
             setIsLoading(false);
           } else if (response.status >= 400 && response.status < 500) {
-            console.log("dupa", response.statusText);
             setErrorMessage(response.statusText);
             setIsLoading(false);
           }

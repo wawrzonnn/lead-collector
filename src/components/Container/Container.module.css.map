@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAMA,AAAA,UAAU,CAAC;EACT,SAAS,EAAE,MAAM;EACjB,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,OAAO;EACnB,QAAQ,EAAE,MAAM;EAChB,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;CAMxB;;AAlBC,MAAM,EAAE,SAAS,EAAE,KAAK;EAK1B,AAAA,UAAU,CAAC;IASP,OAAO,EAAE,IAAI;IACb,cAAc,EAAE,MAAM;GAGzB",
-    "sources": [
-        "Container.module.scss"
-    ],
-    "names": [],
-    "file": "Container.module.css"
-}
