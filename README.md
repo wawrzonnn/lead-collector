@@ -98,8 +98,8 @@ Experience Lead Collector in action: [Live Demo Link](https://lead-collector-bla
 #### ◇ Mobile Screen
 
 <p align="center">
-  <a href="./docs/lead2Small.jpg.png">
-    <img src="./docs/lead2Small.jpg.png" alt="Mobile Screen Thumbnail"/>
+  <a href="./docs/lead2Small.jpg">
+    <img src="./docs/lead2Small.jpg" alt="Mobile Screen Thumbnail"/>
   </a>
 </p>
 
